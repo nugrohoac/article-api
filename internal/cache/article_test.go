@@ -48,6 +48,8 @@ func (a articleSuite) TestArticleRedis_Store() {
 
 	err = a.Client.Get(context.Background(), cache.KeyArticle).Err()
 	require.Equal(a.T(), redis.Nil, err)
+
+	articleRepoMock.AssertExpectations(a.T())
 }
 
 func (a articleSuite) TestArticleRedis_Fetch() {
@@ -69,4 +71,6 @@ func (a articleSuite) TestArticleRedis_Fetch() {
 	err = json.Unmarshal([]byte(value), &_articles)
 	require.NoError(a.T(), err)
 	require.Equal(a.T(), articles, _articles)
+
+	articleRepoMock.AssertExpectations(a.T())
 }

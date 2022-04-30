@@ -5,9 +5,9 @@ import "time"
 // Article .
 type Article struct {
 	ID      int64     `json:"id"`
-	Author  string    `json:"author"`
-	Title   string    `json:"title"`
-	Body    string    `json:"body"`
+	Author  string    `json:"author" validate:"required"`
+	Title   string    `json:"title" validate:"required"`
+	Body    string    `json:"body" validate:"required"`
 	Created time.Time `json:"created"`
 }
 
