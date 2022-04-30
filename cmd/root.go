@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"context"
 	"database/sql"
 	"flag"
 	"fmt"
@@ -8,6 +9,7 @@ import (
 	"github.com/nugrohoac/kumparan-assessment/article"
 	"github.com/nugrohoac/kumparan-assessment/internal/cache"
 	"github.com/nugrohoac/kumparan-assessment/internal/postgresql"
+	"github.com/sirupsen/logrus"
 	"log"
 
 	ka "github.com/nugrohoac/kumparan-assessment"
@@ -91,6 +93,10 @@ func initApp() {
 		Password: redisPassword,
 		DB:       redisDB,
 	})
+
+	if err = client.Ping(context.Background()).Err(); err != nil {
+		logrus.Fatal(err)
+	}
 
 	articleRepo = postgresql.NewArticleRepository(db)
 	articleRepo = cache.NewArticleRedis(client, articleRepo)

@@ -40,7 +40,7 @@ func (a articleHandler) fetch(c echo.Context) error {
 
 	articles, err := a.service.Fetch(c.Request().Context(), filter)
 	if err != nil {
-		return c.JSON(http.StatusInternalServerError, 0)
+		return c.JSON(http.StatusInternalServerError, err)
 	}
 
 	return c.JSON(http.StatusOK, articles)

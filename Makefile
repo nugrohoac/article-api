@@ -17,14 +17,14 @@ lint:
 run:
 	@go run cmd/main/main.go
 build:
-	@go build -o scholarship-api cmd/app/main.go
+	@go build -o kumparan-api cmd/main/main.go
 
 docker-run:
-	@docker stop bangun_container && \
-	docker rm -f bangun_container && \
-	docker image rm -f bangun_api && \
-	docker build -t bangun_api . && \
-	docker run --name=bangun_container -d -it -p 7070:7070 bangun_api
+	@docker stop kumparan_container && \
+	docker rm -f kumparan_container && \
+	docker image rm -f kumparan_api && \
+	docker build -t kumparan_api . && \
+	docker run --name=kumparan_container -d -it -p 9000:9000 kumparan_api
 
 mock:
 	@mockery --dir=./src/business --name=ScholarshipService --output=./mocks
