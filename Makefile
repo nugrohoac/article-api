@@ -29,3 +29,12 @@ docker-run:
 mock:
 	@mockery --dir=./src/business --name=ScholarshipService --output=./mocks
 	@mockery --dir=./src/business --name=ScholarshipRepository --output=./mocks
+
+compose-rebuild:
+	@docker-compose up --build -d
+
+compose-up:
+	@docker-compose up -d
+
+compose-down:
+	@docker-compose down && docker image rm kumparan-image
