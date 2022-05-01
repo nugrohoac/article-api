@@ -17,7 +17,7 @@ type TestSuite struct {
 // SetupSuite .
 func (t *TestSuite) SetupSuite() {
 	t.Client = redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "localhost:6378",
 		Password: "",
 		DB:       0,
 	})
