@@ -4,9 +4,12 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
+    image: kumparan-image
     container_name: kumparan-container-api
     ports:
       - "9000:9000"
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
     depends_on:
       - redis
   redis:

@@ -87,6 +87,10 @@ func initApp() {
 		log.Fatalln("Error init database connection : ", err)
 	}
 
+	if err = db.Ping(); err != nil {
+		log.Fatalln("failed connect postgres : ", err)
+	}
+
 	addressRedis := fmt.Sprintf("%s:%d", redisHost, redisPort)
 	client := redis.NewClient(&redis.Options{
 		Addr:     addressRedis,
@@ -95,7 +99,7 @@ func initApp() {
 	})
 
 	if err = client.Ping(context.Background()).Err(); err != nil {
-		logrus.Fatal(err)
+		logrus.Fatal("failed connect redis : ", err)
 	}
 
 	articleRepo = postgresql.NewArticleRepository(db)
