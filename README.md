@@ -1,4 +1,4 @@
-# Kumparan assessment
+
 Article Repository
 
 ## Prerequisites
