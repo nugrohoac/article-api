@@ -52,6 +52,7 @@ func TestArticleService_Store(t *testing.T) {
 			articleRepoMock := new(mocks.ArticleRepository)
 
 			if test.storeArticle.IsCalled {
+				// a,b,c a...
 				articleRepoMock.On("Store", test.storeArticle.Input...).
 					Return(test.storeArticle.Output...).
 					Once()
